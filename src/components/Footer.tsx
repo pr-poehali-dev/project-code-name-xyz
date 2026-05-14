@@ -9,6 +9,11 @@ export default function Footer() {
   const [openDreams, setOpenDreams] = useState(false);
   const [openForever, setOpenForever] = useState(false);
 
+  const [visited, setVisited] = useState({ heart: false, love: false, memories: false, dreams: false, together: false });
+  const allVisited = Object.values(visited).every(Boolean);
+
+  const visit = (key: keyof typeof visited) => setVisited((v) => ({ ...v, [key]: true }));
+
   return (
     <>
       <div
@@ -22,40 +27,42 @@ export default function Footer() {
                 <div className="flex flex-col gap-1 sm:gap-2">
                   <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Чувства</h3>
                   <button
-                    onClick={() => setOpenLove(true)}
+                    onClick={() => { setOpenLove(true); visit("love"); }}
                     className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Любовь
                   </button>
                   <button
-                    onClick={() => setOpen(true)}
+                    onClick={() => { setOpen(true); visit("heart"); }}
                     className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Моё сердце
                   </button>
                   <button
-                    onClick={() => setOpenForever(true)}
-                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
+                    onClick={() => allVisited && setOpenForever(true)}
+                    disabled={!allVisited}
+                    title={!allVisited ? "Сначала открой все остальные" : undefined}
+                    className={`transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none p-0 ${allVisited ? "text-white hover:text-pink-300 cursor-pointer" : "text-white/30 cursor-not-allowed"}`}
                   >
-                    Навсегда
+                    Навсегда {!allVisited && "🔒"}
                   </button>
                 </div>
                 <div className="flex flex-col gap-1 sm:gap-2">
                   <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Моменты</h3>
                   <button
-                    onClick={() => setOpenMemories(true)}
+                    onClick={() => { setOpenMemories(true); visit("memories"); }}
                     className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Воспоминания
                   </button>
                   <button
-                    onClick={() => setOpenDreams(true)}
+                    onClick={() => { setOpenDreams(true); visit("dreams"); }}
                     className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Мечты
                   </button>
                   <button
-                    onClick={() => setOpenTogether(true)}
+                    onClick={() => { setOpenTogether(true); visit("together"); }}
                     className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Вместе
