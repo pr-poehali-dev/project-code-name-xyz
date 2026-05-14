@@ -51,8 +51,9 @@ export default function Featured() {
                 alt="Навсегда"
                 className="w-full h-auto"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white text-center">
-                <p className="text-xl font-bold">Навсегда ❤️</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent p-6 text-white text-center">
+                <p className="text-lg font-bold mb-2">Навсегда ❤️</p>
+                <p className="text-sm opacity-90 leading-relaxed">С тобой каждая секунда приносит огромную радость и каждый раз, когда мы видимся, я чувствую себя самым счастливым человеком</p>
               </div>
               <button
                 onClick={() => setOpen(false)}
