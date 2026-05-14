@@ -7,6 +7,7 @@ export default function Footer() {
   const [openLove, setOpenLove] = useState(false);
   const [openMemories, setOpenMemories] = useState(false);
   const [openDreams, setOpenDreams] = useState(false);
+  const [openForever, setOpenForever] = useState(false);
 
   return (
     <>
@@ -32,12 +33,12 @@ export default function Footer() {
                   >
                     Моё сердце
                   </button>
-                  <a
-                    href="#forever"
-                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  <button
+                    onClick={() => setOpenForever(true)}
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Навсегда
-                  </a>
+                  </button>
                 </div>
                 <div className="flex flex-col gap-1 sm:gap-2">
                   <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Моменты</h3>
@@ -101,6 +102,49 @@ export default function Footer() {
               <button
                 onClick={() => setOpen(false)}
                 className="absolute top-3 right-3 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {openForever && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpenForever(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="flex flex-col items-center gap-6 px-8 py-12 text-center"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                className="text-[120px] leading-none select-none"
+              >
+                ❤️
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-white text-2xl sm:text-3xl font-bold tracking-wide"
+              >
+                Серафима, я тебя люблю
+              </motion.p>
+              <button
+                onClick={() => setOpenForever(false)}
+                className="mt-4 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
               >
                 ✕
               </button>
