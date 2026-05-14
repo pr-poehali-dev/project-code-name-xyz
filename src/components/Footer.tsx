@@ -5,6 +5,7 @@ export default function Footer() {
   const [open, setOpen] = useState(false);
   const [openTogether, setOpenTogether] = useState(false);
   const [openLove, setOpenLove] = useState(false);
+  const [openMemories, setOpenMemories] = useState(false);
 
   return (
     <>
@@ -39,12 +40,12 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col gap-1 sm:gap-2">
                   <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Моменты</h3>
-                  <a
-                    href="#memories"
-                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  <button
+                    onClick={() => setOpenMemories(true)}
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Воспоминания
-                  </a>
+                  </button>
                   <a
                     href="#dreams"
                     className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
@@ -98,6 +99,43 @@ export default function Footer() {
               </div>
               <button
                 onClick={() => setOpen(false)}
+                className="absolute top-3 right-3 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {openMemories && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpenMemories(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.7, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-sm w-full mx-4 rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img
+                src="https://cdn.poehali.dev/projects/e2777924-1b7f-4818-bd63-b7e6c541a958/bucket/82c3e3fb-8a0d-4016-9851-696fe6b53f3f.jpg"
+                alt="Воспоминания"
+                className="w-full h-auto"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent p-6 text-white text-center">
+                <p className="text-lg font-bold mb-2">Воспоминания 🎮</p>
+                <p className="text-sm opacity-90 leading-relaxed">СЛК КАНОНИЩЕ</p>
+              </div>
+              <button
+                onClick={() => setOpenMemories(false)}
                 className="absolute top-3 right-3 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
               >
                 ✕
