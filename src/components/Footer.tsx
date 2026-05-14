@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Footer() {
   const [open, setOpen] = useState(false);
+  const [openTogether, setOpenTogether] = useState(false);
 
   return (
     <>
@@ -49,12 +50,12 @@ export default function Footer() {
                   >
                     Мечты
                   </a>
-                  <a
-                    href="#together"
-                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  <button
+                    onClick={() => setOpenTogether(true)}
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
                   >
                     Вместе
-                  </a>
+                  </button>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
@@ -96,6 +97,43 @@ export default function Footer() {
               </div>
               <button
                 onClick={() => setOpen(false)}
+                className="absolute top-3 right-3 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {openTogether && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpenTogether(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.7, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-sm w-full mx-4 rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img
+                src="https://cdn.poehali.dev/projects/e2777924-1b7f-4818-bd63-b7e6c541a958/bucket/9fa24614-7386-4b6a-aa9b-76abf6504d24.jpg"
+                alt="Вместе"
+                className="w-full h-auto"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent p-6 text-white text-center">
+                <p className="text-lg font-bold mb-2">Вместе 🕶️</p>
+                <p className="text-sm opacity-90 leading-relaxed">Мы самые крутые</p>
+              </div>
+              <button
+                onClick={() => setOpenTogether(false)}
                 className="absolute top-3 right-3 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
               >
                 ✕
