@@ -1,65 +1,109 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 export default function Footer() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div
-      className="relative h-[400px] sm:h-[600px] lg:h-[800px] max-h-[800px]"
-      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
-    >
-      <div className="relative h-[calc(100vh+400px)] sm:h-[calc(100vh+600px)] lg:h-[calc(100vh+800px)] -top-[100vh]">
-        <div className="h-[400px] sm:h-[600px] lg:h-[800px] sticky top-[calc(100vh-400px)] sm:top-[calc(100vh-600px)] lg:top-[calc(100vh-800px)]">
-          <div className="bg-rose-900 py-4 sm:py-6 lg:py-8 px-4 sm:px-6 h-full w-full flex flex-col justify-between">
-            <div className="flex shrink-0 gap-8 sm:gap-12 lg:gap-20">
-              <div className="flex flex-col gap-1 sm:gap-2">
-                <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Чувства</h3>
-                <a
-                  href="#love"
-                  className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Любовь
-                </a>
-                <a
-                  href="#heart"
-                  className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Сердце
-                </a>
-                <a
-                  href="#forever"
-                  className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Навсегда
-                </a>
+    <>
+      <div
+        className="relative h-[400px] sm:h-[600px] lg:h-[800px] max-h-[800px]"
+        style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+      >
+        <div className="relative h-[calc(100vh+400px)] sm:h-[calc(100vh+600px)] lg:h-[calc(100vh+800px)] -top-[100vh]">
+          <div className="h-[400px] sm:h-[600px] lg:h-[800px] sticky top-[calc(100vh-400px)] sm:top-[calc(100vh-600px)] lg:top-[calc(100vh-800px)]">
+            <div className="bg-rose-900 py-4 sm:py-6 lg:py-8 px-4 sm:px-6 h-full w-full flex flex-col justify-between">
+              <div className="flex shrink-0 gap-8 sm:gap-12 lg:gap-20">
+                <div className="flex flex-col gap-1 sm:gap-2">
+                  <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Чувства</h3>
+                  <a
+                    href="#love"
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  >
+                    Любовь
+                  </a>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base text-left bg-transparent border-none cursor-pointer p-0"
+                  >
+                    Моё сердце
+                  </button>
+                  <a
+                    href="#forever"
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  >
+                    Навсегда
+                  </a>
+                </div>
+                <div className="flex flex-col gap-1 sm:gap-2">
+                  <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Моменты</h3>
+                  <a
+                    href="#memories"
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  >
+                    Воспоминания
+                  </a>
+                  <a
+                    href="#dreams"
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  >
+                    Мечты
+                  </a>
+                  <a
+                    href="#together"
+                    className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
+                  >
+                    Вместе
+                  </a>
+                </div>
               </div>
-              <div className="flex flex-col gap-1 sm:gap-2">
-                <h3 className="mb-1 sm:mb-2 uppercase text-neutral-400 text-xs sm:text-sm">Моменты</h3>
-                <a
-                  href="#memories"
-                  className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Воспоминания
-                </a>
-                <a
-                  href="#dreams"
-                  className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Мечты
-                </a>
-                <a
-                  href="#together"
-                  className="text-white hover:text-pink-300 transition-colors duration-300 text-sm sm:text-base"
-                >
-                  Вместе
-                </a>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
+                <h1 className="text-[18vw] sm:text-[16vw] lg:text-[14vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-bold tracking-tight">
+                  ЛЮБЛЮ ❤️
+                </h1>
+                <p className="text-white text-sm sm:text-base">{new Date().getFullYear()} Навсегда</p>
               </div>
-            </div>
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0">
-              <h1 className="text-[18vw] sm:text-[16vw] lg:text-[14vw] leading-[0.8] mt-4 sm:mt-6 lg:mt-10 text-white font-bold tracking-tight">
-                ЛЮБЛЮ ❤️
-              </h1>
-              <p className="text-white text-sm sm:text-base">{new Date().getFullYear()} Навсегда</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.7, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-sm w-full mx-4 rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img
+                src="https://cdn.poehali.dev/projects/e2777924-1b7f-4818-bd63-b7e6c541a958/bucket/55237709-9818-4a07-8738-c44b2d13ccd5.jpg"
+                alt="Моё сердце"
+                className="w-full h-auto"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent p-6 text-white text-center">
+                <p className="text-lg font-bold mb-2">Моё сердце ❤️</p>
+                <p className="text-sm opacity-90 leading-relaxed">Навсегда занято исключительно тобой</p>
+              </div>
+              <button
+                onClick={() => setOpen(false)}
+                className="absolute top-3 right-3 bg-white/20 hover:bg-white/40 text-white rounded-full w-8 h-8 flex items-center justify-center transition-all"
+              >
+                ✕
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
