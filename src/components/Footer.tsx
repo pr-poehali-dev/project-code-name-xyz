@@ -125,7 +125,7 @@ export default function Footer() {
               className="relative max-w-sm w-full mx-4 rounded-2xl overflow-hidden shadow-2xl"
             >
               <img
-                src="https://cdn.poehali.dev/projects/e2777924-1b7f-4818-bd63-b7e6c541a958/bucket/9fa24614-7386-4b6a-aa9b-76abf6504d24.jpg"
+                src="https://cdn.poehali.dev/projects/e2777924-1b7f-4818-bd63-b7e6c541a958/bucket/bcc312d0-4a51-4f74-b377-24562eec3af2.jpg"
                 alt="Любовь"
                 className="w-full h-auto"
               />
